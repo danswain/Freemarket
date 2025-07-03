@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Tests", "test\Freemarket.Tests\Freemarket.Tests.csproj", "{053027C3-D046-4824-A751-37DE1DDFFF5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{729BC741-DA0E-4078-ADDD-F68CF254E372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freemarket.Api", "src\Freemarket.Api\Freemarket.Api.csproj", "{B9D9A134-B050-4F7B-8164-018D90BFEBBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BAB3B0AA-E631-4F30-8D29-862820210B02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{17FF50AE-D9FA-4C80-A545-FF0AEBC054E9}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{053027C3-D046-4824-A751-37DE1DDFFF5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053027C3-D046-4824-A751-37DE1DDFFF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053027C3-D046-4824-A751-37DE1DDFFF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053027C3-D046-4824-A751-37DE1DDFFF5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D9A134-B050-4F7B-8164-018D90BFEBBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D9A134-B050-4F7B-8164-018D90BFEBBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D9A134-B050-4F7B-8164-018D90BFEBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D9A134-B050-4F7B-8164-018D90BFEBBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{053027C3-D046-4824-A751-37DE1DDFFF5A} = {729BC741-DA0E-4078-ADDD-F68CF254E372}
+		{B9D9A134-B050-4F7B-8164-018D90BFEBBE} = {BAB3B0AA-E631-4F30-8D29-862820210B02}
+	EndGlobalSection
+EndGlobal
