@@ -2,10 +2,10 @@
 
 namespace Freemarket.Api.Domain;
 
-public class Basket
+public class BasketItem
 {
     [Key]
     public Guid Id { get; set; }
     public string Name { get; set; }
-    public ICollection<BasketItem> BasketItems { get; set; } = new List<BasketItem>();
+    public Guid BasketId { get; set; }
 }

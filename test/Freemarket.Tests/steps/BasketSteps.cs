@@ -25,7 +25,11 @@ public class BasketSteps
     [StepDefinition("I add an item to the basket")]
     public async Task AddItemToBasket()
     {
-        dynamic item = new { Name = "Item" };
+        var item = new BasketItem
+        {
+            Id = Guid.NewGuid(),
+            Name = "A Cup of Tea"
+        };
         StringContent httpContent = ToHttpContent(item);
         var response = await _basketApi.Client.PutAsync($"Basket/{_basketGuid}", httpContent);
         Assert.That(response.IsSuccessStatusCode, Is.True);

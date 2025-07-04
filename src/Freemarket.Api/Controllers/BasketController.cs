@@ -1,22 +1,54 @@
-﻿using Freemarket.Api.Domain;
+﻿using Freemarket.Api.Data;
+using Freemarket.Api.Domain;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Freemarket.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class BasketController : ControllerBase
+public class BasketController(BasketDbContext context) : ControllerBase
 {
+    private readonly BasketDbContext _context = context;
+
     [HttpGet("{basketGuid:guid}",Name = "GetBasket")]
     public async Task<IActionResult> GetBasket([FromRoute] Guid basketGuid)
     {
-        var basket = new Basket();
+        var basket = _context.Baskets
+            .Include(x=>x.BasketItems)
+            .FirstOrDefault(b => b.Id == basketGuid);
+        
+        if (basket == null) return NotFound(basketGuid);
+        
         return Ok(basket);
     }
     
     [HttpPut("{basketGuid:guid}",Name = "PutBasket")]
-    public async Task<IActionResult> PutBasket([FromRoute] Guid basketGuid, dynamic jsonPayload)
+    public async Task<IActionResult> PutBasket([FromRoute] Guid basketGuid, BasketItem basketItem)
     {
-        return Ok(jsonPayload);
+        var basket = _context.Baskets.FirstOrDefault(x => x.Id == basketGuid);
+        if (basket == null)
+        {
+            basket = new Basket()
+            {
+                Id = basketGuid,
+                Name = "A Nice  Basket",
+                BasketItems = new List<BasketItem>()
+                {
+                    basketItem
+                }
+            };
+            await _context.Baskets.AddAsync(basket);
+        }
+        else
+        {
+            basket.BasketItems.Add(basketItem);
+            _context.Baskets.Update(basket);
+        }
+
+        await _context.SaveChangesAsync();
+        
+        
+        return Ok(basketItem);
     }    
 }
