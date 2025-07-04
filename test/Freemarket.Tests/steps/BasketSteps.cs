@@ -10,6 +10,7 @@ public class BasketSteps
 {
     private Guid _basketGuid;
     private readonly BasketApi _basketApi;
+    private Guid _basketItemId;
 
     public BasketSteps(BasketApi basketApi)
     {
@@ -25,13 +26,21 @@ public class BasketSteps
     [StepDefinition("I add an item to the basket")]
     public async Task AddItemToBasket()
     {
+        _basketItemId = Guid.NewGuid();
         var item = new BasketItem
         {
-            Id = Guid.NewGuid(),
+            Id = _basketItemId,
             Name = "A Cup of Tea"
         };
         StringContent httpContent = ToHttpContent(item);
         var response = await _basketApi.Client.PutAsync($"Basket/{_basketGuid}", httpContent);
+        Assert.That(response.IsSuccessStatusCode, Is.True);
+    }    
+    
+    [StepDefinition("I remove an item to the basket")]
+    public async Task RemoveItemFromBasket()
+    {
+        var response = await _basketApi.Client.DeleteAsync($"Basket/{_basketGuid}/{_basketItemId}");
         Assert.That(response.IsSuccessStatusCode, Is.True);
     }
 
@@ -42,8 +51,8 @@ public class BasketSteps
         response.EnsureSuccessStatusCode();
         string json = await response.Content.ReadAsStringAsync();
         var basket = JsonConvert.DeserializeObject<Basket>(json);
-        Assert.That(basket.BasketItems, Is.Not.Null.And.Not.Empty, "Basket is null or empty");
-        Assert.That(basket.BasketItems.Count, Is.EqualTo(numberOfItems), "Basket is null or empty");
+        Assert.That(basket.BasketItems, Is.Not.Null, "Basket is null");
+        Assert.That(basket.BasketItems.Count, Is.EqualTo(numberOfItems), "Basket has wrong number of items");
         
     }
 

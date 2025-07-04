@@ -48,7 +48,21 @@ public class BasketController(BasketDbContext context) : ControllerBase
 
         await _context.SaveChangesAsync();
         
-        
         return Ok(basketItem);
+    }    
+    
+    [HttpDelete("{basketGuid:guid}/{basketItemGuid:guid}",Name = "RemoveBasketItem")]
+    public async Task<IActionResult> RemoveBasketItem([FromRoute] Guid basketGuid, [FromRoute] Guid basketItemGuid)
+    {
+        var basket = _context.Baskets
+            .Include(x=>x.BasketItems)
+            .FirstOrDefault(b => b.Id == basketGuid);
+        
+        if (basket == null) return NotFound($"Basket:{basketGuid}");
+        var basketItem = basket.BasketItems.FirstOrDefault(b => b.Id == basketItemGuid);
+        if (basketItem == null) return NotFound($"BasketItem:{basketItemGuid}");
+        _context.BasketItems.Remove(basketItem);
+        await _context.SaveChangesAsync();
+        return NoContent();
     }    
 }
