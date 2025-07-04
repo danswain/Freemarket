@@ -22,7 +22,11 @@ So that I can buy the items I have added to the basket
         Then I have 0 item in the basket
         
         
-# Add multiple of the same item to the basket
+Scenario: Add multiple of the same item to the basket
+    Given I have a basket
+    When I add the same item twice to the basket
+    Then I have 2 item in the basket
+        
 # Get the total cost for the basket (including 20% VAT)
 # Get the total cost without VAT
 # Add a discounted item to the basket

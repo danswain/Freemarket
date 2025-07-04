@@ -201,6 +201,36 @@ namespace Freemarket.Tests
             }
             await this.ScenarioCleanupAsync();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add multiple of the same item to the basket")]
+        public async global::System.Threading.Tasks.Task AddMultipleOfTheSameItemToTheBasket()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Add multiple of the same item to the basket", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 25
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 26
+    await testRunner.GivenAsync("I have a basket", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 27
+    await testRunner.WhenAsync("I add the same item twice to the basket", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 28
+    await testRunner.ThenAsync("I have 2 item in the basket", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
     }
 }
 #pragma warning restore

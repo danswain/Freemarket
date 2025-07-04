@@ -35,6 +35,25 @@ public class BasketSteps
         StringContent httpContent = ToHttpContent(item);
         var response = await _basketApi.Client.PutAsync($"Basket/{_basketGuid}", httpContent);
         Assert.That(response.IsSuccessStatusCode, Is.True);
+    }     
+    
+    [StepDefinition("I add the same item twice to the basket")]
+    public async Task AddSameItemTwiceToBasket()
+    {
+        _basketItemId = Guid.NewGuid();
+        var firstItem = new BasketItem
+        {
+            Name = "A Cup of Tea"
+        };
+        var firstResponse = await _basketApi.Client.PutAsync($"Basket/{_basketGuid}", ToHttpContent(firstItem));
+        Assert.That(firstResponse.IsSuccessStatusCode, Is.True);
+        
+        var secondItem = new BasketItem
+        {
+            Name = "A Cup of Tea"
+        };        
+        var secondResponse = await _basketApi.Client.PutAsync($"Basket/{_basketGuid}", ToHttpContent(secondItem));
+        Assert.That(secondResponse.IsSuccessStatusCode, Is.True);        
     }    
     
     [StepDefinition("I remove an item to the basket")]
