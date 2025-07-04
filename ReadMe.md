@@ -5,6 +5,12 @@ This should be a straight dotnet test to see it running.
 Owing to time constraints I kept it simple. I started with the Cucumber style Component tests to start
 a higher level than a unit test.
 
+I'm going to stop for now. notes for future:
+- re-consider the put for adding items
+- introduce product-code and pricing
+- probably should have a product-catalog or some such concept
+- need some sort of discount mechanism
+
 ---
 
 Freemarket FX Software Engineer Candidate Coding Challenge
