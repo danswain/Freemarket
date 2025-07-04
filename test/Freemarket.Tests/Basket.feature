@@ -5,7 +5,6 @@ So that I can buy the items I have added to the basket
 
 Scenario: Add an item to the basket
 Given I have a basket
-And I have an item of tea
 When I add an item to the basket
 Then I have 1 item in the basket
 
