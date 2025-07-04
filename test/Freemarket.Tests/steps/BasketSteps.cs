@@ -1,10 +1,7 @@
 ﻿using System.Text;
-using Freemarket.Api;
 using Freemarket.Api.Domain;
 using Reqnroll;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
-using Reqnroll.BoDi;
 
 namespace Freemarket.Tests;
 
