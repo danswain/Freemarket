@@ -43,6 +43,7 @@ public class BasketSteps
         string json = await response.Content.ReadAsStringAsync();
         var basket = JsonConvert.DeserializeObject<Basket>(json);
         Assert.That(basket.BasketItems, Is.Not.Null.And.Not.Empty, "Basket is null or empty");
+        Assert.That(basket.BasketItems.Count, Is.EqualTo(numberOfItems), "Basket is null or empty");
         
     }
 
