@@ -1,5 +1,11 @@
 # Freemarket
 
+This should be a straight dotnet test to see it running.
+
+Owing to time constraints I kept it simple. I started with the Cucumber style Component tests to start
+a higher level than a unit test.
+---
+
 Freemarket FX Software Engineer Candidate Coding Challenge
 We would like you to develop a REST based Web API for an example online shopping basket that has the following features:
 - Add an item to the basket

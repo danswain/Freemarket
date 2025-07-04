@@ -9,7 +9,12 @@ When I add an item to the basket
 Then I have 1 item in the basket
 
 
-# Add multiple items to the basket
+Scenario: Add multiple items to the basket
+ Given I have a basket
+ When I add an item to the basket
+ When I add an item to the basket
+ Then I have 2 item in the basket
+ 
 # Remove an item from the basket
 # Add multiple of the same item to the basket
 # Get the total cost for the basket (including 20% VAT)

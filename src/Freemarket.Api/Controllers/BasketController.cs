@@ -42,8 +42,8 @@ public class BasketController(BasketDbContext context) : ControllerBase
         }
         else
         {
-            basket.BasketItems.Add(basketItem);
-            _context.Baskets.Update(basket);
+            basketItem.BasketId = basketGuid;
+            await _context.BasketItems.AddAsync(basketItem);
         }
 
         await _context.SaveChangesAsync();
